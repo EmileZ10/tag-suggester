@@ -13,7 +13,7 @@ print("ML  :", [tags[i] for i in probs.argsort()[::-1][:3] if probs[i] > 0.1] or
 
 # modele BERT
 NAME = "distilbert-base-uncased"
-saved = torch.load("model_bert_Emile_Zanna.pt")
+saved = torch.load("model_bert_Emile_Zanna.pt", weights_only=True)
 tok = AutoTokenizer.from_pretrained(NAME)
 bert = AutoModelForSequenceClassification.from_pretrained(NAME, num_labels=len(saved["tags"]))
 bert.load_state_dict(saved["state_dict"])
